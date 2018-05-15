@@ -6,31 +6,60 @@ import org.junit.Test;
 import pl.sii.eu.model.Amount;
 import pl.sii.eu.model.Currency;
 
-import static org.junit.Assert.*;
+import static pl.sii.eu.model.Currency.EUR;
+import static pl.sii.eu.model.Currency.PLN;
 
 public class CurrencyConverterImplementationTest {
 
-    CurrencyConverterImplementation CCITest = new CurrencyConverterImplementation();
-    Amount inPLN;
-    Amount inEUR;
+    private CurrencyConverterImplementation CCITest = new CurrencyConverterImplementation();
+    private Amount inPLN;
+    private Amount inEUR;
+    private Amount test;
+    private long[] tableEUR;
+    private long[] tablePLN;
 
     @Before
     public void setUp() throws Exception {
-        inPLN = new Amount(10000, Currency.PLN);
-        inEUR = new Amount(42518,Currency.EUR);
+        tablePLN = new long[]{4252,42518,0,850};
+        tableEUR = new long[]{1000,10000,0,200};
     }
 
     @Test
     public void convertToPln() {
-        Amount test = CCITest.convertToPln(inEUR);
-        System.out.println(test.getValue()+" "+inPLN.getValue());
-        Assert.assertEquals(inPLN.getValue(),test.getValue());
+        for (int i = 0; i < tableEUR.length; i++) {
+            inEUR = new Amount(tableEUR[i], EUR);
+            test = CCITest.convertToPln(inEUR);
+            inPLN = new Amount(tablePLN[i], PLN);
+            Assert.assertEquals(inPLN.getValue(),test.getValue());
+        }
+
+    }
+
+    @Test
+    public void convertCurrToCurr(){
+        for (int i = 0; i < tablePLN.length; i++) {
+            inPLN = new Amount(tablePLN[i], PLN);
+            test = CCITest.convertToPln(inPLN);
+            Assert.assertEquals(inPLN.getValue(),test.getValue());
+        }
+
     }
 
     @Test
     public void convertToEur() {
-        Amount test = CCITest.convertToEur(inPLN);
-        System.out.println(test.getValue()+" "+inEUR.getValue());
-        Assert.assertEquals(inEUR.getValue(),test.getValue());
+        for (int i = 0; i < tablePLN.length; i++) {
+            inPLN = new Amount(tablePLN[i], PLN);
+            inEUR = new Amount(tableEUR[i], EUR);
+            test = CCITest.convertToEur(inPLN);
+            Assert.assertEquals(inEUR.getValue(),test.getValue());
+        }
+    }
+
+    @Test
+    public void isCurrencyTheSame(){
+        inPLN=new Amount(100,PLN);
+        Assert.assertFalse(CCITest.isCurencyTheSame(inPLN,EUR));
+        Assert.assertTrue(CCITest.isCurencyTheSame(inPLN,PLN));
+
     }
 }

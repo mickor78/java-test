@@ -13,23 +13,23 @@ import pl.sii.eu.UpperCaseCheckerImplementation;
  */
 public class UpperCaseCheckerImplementationTest {
 
-    String[] withUpperCaseLetter=new String[3];
-    String withoutUpperCaseLetter;
+    String[] withUpperCaseLetter;
+    String[] withoutUpperCaseLetter;
     UpperCaseCheckerImplementation uCCITest;
 
     @Before
     public void setUp() throws Exception {
         uCCITest = new UpperCaseCheckerImplementation();
-        withoutUpperCaseLetter="asbvhsdfauhr2364352";
-        withUpperCaseLetter[0]="sadfehfbjdbfjbA";
-        withUpperCaseLetter[1]="asf3478rAhbdsbhgy437";
-        withUpperCaseLetter[2]="ASDUHABDHJAGDAISH";
+        withoutUpperCaseLetter=new String[]{"asbvhsdfauhr2364352","","a","/"};
+        withUpperCaseLetter=new String[]{"sadfehfbjdbfjbA","asf3478rAhbdsbhgy437","ASDUHABDHJAGDAISH","A"};
     }
 
     @Test
     public void hasNotUpperCaseLetters() {
-        Assert.assertFalse(uCCITest.hasUpperCaseLetters(withoutUpperCaseLetter));
-    }
+        for (String e:withoutUpperCaseLetter
+             ) {
+            Assert.assertFalse(uCCITest.hasUpperCaseLetters(e));
+        }    }
 
     @Test
     public void hasUpperCaseLetters(){
