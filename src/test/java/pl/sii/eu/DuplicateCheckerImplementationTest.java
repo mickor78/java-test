@@ -3,7 +3,12 @@ package pl.sii.eu;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
+/**
+ * test of  pl.sii.eu.DuplicateCheckerImplementation
+ *
+ * @author Michal Korzniewski
+ * @email mickor78@gmail.com
+ */
 public class DuplicateCheckerImplementationTest {
 
     private String [] withDuplicateString;

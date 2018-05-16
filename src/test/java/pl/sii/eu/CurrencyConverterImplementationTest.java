@@ -9,6 +9,13 @@ import pl.sii.eu.model.Currency;
 import static pl.sii.eu.model.Currency.EUR;
 import static pl.sii.eu.model.Currency.PLN;
 
+
+/**
+ * test of  pl.sii.eu.CurrencyConverterImplementation
+ *
+ * @author Michal Korzniewski
+ * @email mickor78@gmail.com
+ */
 public class CurrencyConverterImplementationTest {
 
     private CurrencyConverterImplementation CCITest = new CurrencyConverterImplementation();

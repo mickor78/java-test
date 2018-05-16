@@ -4,7 +4,7 @@ import pl.sii.eu.UpperCaseChecker;
 
 
 /**
- * Class implements UpperCaseChecker interface.
+ * Implementation of UpperCaseChecker interface.
  *
  * @author Michal Korzeniewski
  * @email mickor78@gmail.com
